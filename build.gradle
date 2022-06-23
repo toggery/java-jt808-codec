@@ -1,0 +1,102 @@
+plugins {
+	id 'java-library'
+	id 'maven-publish'
+	id 'signing'
+}
+
+group = 'io.github.toggery'
+version = '1.0.0'
+sourceCompatibility = '1.8'
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+ext {
+	jt808MessageBodyVersion = '1.0.2'
+	nettyVersion = '4.1.78.Final'
+	jupiterVersion = '5.8.2'
+}
+
+dependencies {
+    api "io.github.toggery:jt808-messagebody:${jt808MessageBodyVersion}"
+
+	implementation "io.netty:netty-buffer:${nettyVersion}"
+
+	testImplementation "org.junit.jupiter:junit-jupiter:${jupiterVersion}"
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+jar {
+    manifest {
+        attributes('Implementation-Title': project.name,
+                   'Implementation-Version': project.version)
+    }
+}
+
+java {
+	withJavadocJar()
+	withSourcesJar()
+}
+
+javadoc {
+	options.encoding = 'UTF-8'
+	options.addStringOption('charset', 'UTF-8')
+	if (JavaVersion.current().isJava9Compatible()) {
+		options.addBooleanOption('html5', true)
+	}
+}
+
+publishing {
+	publications {
+		MyLibrary(MavenPublication) {
+			artifactId = 'jt808-codec'
+			from components.java
+			pom {
+				name = 'JT/T 808 Codec'
+				description = 'Java 语言实现的 JT/T 808 编码解码'
+				url = 'https://github.com/toggery/java-jt808-codec'
+				scm {
+					connection = 'scm:git:git://github.com/toggery/java-jt808-codec.git'
+					developerConnection = 'scm:git:ssh://github.com/toggery/java-jt808-codec.git'
+					url = 'https://github.com/toggery/java-jt808-codec'
+				}
+				licenses {
+					license {
+						name = 'The MIT License'
+						url = 'https://choosealicense.com/licenses/mit/'
+					}
+				}
+				developers {
+					developer {
+						id = 'togger'
+						name = 'Togger Jiang'
+						email = 'togger@qq.com'
+					}
+				}
+			}
+		}
+	}
+	repositories {
+		maven {
+			if (version.endsWith('SNAPSHOT')) {
+				url = 'https://s01.oss.sonatype.org/content/repositories/snapshots'
+			} else {
+				url = 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2'
+			}
+			credentials {
+				username = findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+				password = findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
+			}
+		}
+	}
+}
+
+signing {
+	sign publishing.publications.MyLibrary
+}

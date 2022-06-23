@@ -13,4 +13,4 @@
 
 <!-- Describe your project in brief -->
 
-JAVA 语言实现的 JT/T 808 协议的编码解码
+Java 语言实现的 JT/T 808 编码解码
