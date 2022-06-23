@@ -73,7 +73,7 @@ public final class B8103Codec implements Codec<B8103> {
             if (param != null) {
                 param.decode(version, fieldBuf, target);
             } else if (other == null || !other.decode(id, version, fieldBuf, target)) {
-                target.putUnknownParam((int) id, ByteBufUtil.hexDump(fieldBuf));
+                target.putUnknownParam(id, ByteBufUtil.hexDump(fieldBuf));
             }
         }
     }
