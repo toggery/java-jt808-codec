@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B8803;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x8803 存储多媒体数据上传】编码解码器
+ * JT/T 消息体编码解码器：0x8803 存储多媒体数据上传
  *
  * @author togger
  */

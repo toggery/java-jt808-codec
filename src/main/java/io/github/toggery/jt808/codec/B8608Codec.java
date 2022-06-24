@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x8608 查询区域或线路数据】编码解码器 元素类型为 DWORD // 2019 new
+ * JT/T 消息体编码解码器：0x8608 查询区域或线路数据 元素类型为 DWORD // 2019 new
  *
  * @author togger
  */

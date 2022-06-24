@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x8600 设置圆形区域】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x8600 设置圆形区域 // 2019 modify
  * <br>
  * <p><b>注：</b>本条消息协议支持周期时间范围，如要限制每天的8:30-18:00，起始/结束时间设
  * 为：000000083000/000000180000，其他以此类推。</p>
@@ -59,7 +59,7 @@ public final class B8600Codec implements Codec<B8600> {
 
 
     /**
-     * JT/T 消息体【0x8600 圆形区域】编码解码器 // 2019 modify
+     * JT/T 消息体编码解码器：0x8600 圆形区域 // 2019 modify
      *
      * @author togger
      */

@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x8602 设置矩形区域】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x8602 设置矩形区域 // 2019 modify
  *
  * @author togger
  */
@@ -56,7 +56,7 @@ public final class B8602Codec implements Codec<B8602> {
 
 
     /**
-     * JT/T 消息体【0x8602 矩形区域】编码解码器 // 2019 modify
+     * JT/T 消息体编码解码器：0x8602 矩形区域 // 2019 modify
      *
      * @author togger
      */

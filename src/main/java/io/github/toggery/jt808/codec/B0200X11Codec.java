@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B0200X11;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x0200 位置附加信息】编码解码器: 0x11 超速报警附加信息，见表 28
+ * JT/T 消息体编码解码器：0x0200 位置信息汇报 附加信息 0x11 超速报警附加信息，见表 28
  *
  * @author togger
  */

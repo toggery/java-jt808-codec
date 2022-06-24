@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B0302;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x0302 提问应答】编码解码器 // 2019 del
+ * JT/T 消息体编码解码器：0x0302 提问应答 // 2019 del
  *
  * @author togger
  */

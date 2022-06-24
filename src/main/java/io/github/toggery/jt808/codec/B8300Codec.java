@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B8300;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x8300 文本信息下发】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x8300 文本信息下发 // 2019 modify
  *
  * @author togger
  */

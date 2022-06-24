@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x8401 设置电话本】编码解码器
+ * JT/T 消息体编码解码器：0x8401 设置电话本
  *
  * @author togger
  */
@@ -59,7 +59,7 @@ public final class B8401Codec implements Codec<B8401> {
 
 
     /**
-     * JT/T 消息体【0x8401 电话本】编码解码器
+     * JT/T 消息体编码解码器：0x8401 电话本
      *
      * @author togger
      */

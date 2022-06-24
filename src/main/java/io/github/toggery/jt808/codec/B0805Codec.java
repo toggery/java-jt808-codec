@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x0805 摄像头立即拍摄命令应答】编码解码器
+ * JT/T 消息体编码解码器：0x0805 摄像头立即拍摄命令应答
  *
  * @author togger
  */

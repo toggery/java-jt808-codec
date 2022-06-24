@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B8801;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x8801 摄像头立即拍摄命令】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x8801 摄像头立即拍摄命令 // 2019 modify
  *
  * @author togger
  */

@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B8106;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体 0x8106 查询指定终端参数 元素类型为 DWORD
+ * JT/T 消息体编码解码器：0x8106 查询指定终端参数 元素类型为 DWORD
  *
  * @author togger
  */

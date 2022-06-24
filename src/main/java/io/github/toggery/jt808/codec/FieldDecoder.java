@@ -3,7 +3,7 @@ package io.github.toggery.jt808.codec;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 字段解码方法
+ * JT/T 字段解码接口
  *
  * @param <I> 字段 {@code ID} 类型
  * @param <T> 目标对象类型

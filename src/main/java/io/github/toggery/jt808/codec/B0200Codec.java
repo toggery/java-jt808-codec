@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * JT/T 消息体【0x0200 位置信息汇报】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x0200 位置信息汇报 // 2019 modify
  *
  * @author togger
  */

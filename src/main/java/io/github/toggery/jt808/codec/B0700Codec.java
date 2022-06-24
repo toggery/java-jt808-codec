@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B0700;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x0700 行驶记录数据上传（应答）】编码解码器
+ * JT/T 消息体编码解码器：0x0700 行驶记录数据上传（应答）
  *
  * @author togger
  */

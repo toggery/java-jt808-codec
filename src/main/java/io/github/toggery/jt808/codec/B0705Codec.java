@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * JT/T 消息体【0x0705 CAN 总线数据上传】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x0705 CAN 总线数据上传 // 2019 modify
  *
  * @author togger
  */
@@ -47,7 +47,7 @@ public final class B0705Codec implements Codec<B0705> {
 
 
     /**
-     * JT/T 消息体【0x0705 CAN 总线数据】编码解码器 // 2019 modify
+     * JT/T 消息体编码解码器：0x0705 CAN 总线数据 // 2019 modify
      *
      * @author togger
      */

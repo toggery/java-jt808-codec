@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * JT/T 消息体【0x8302 提问下发】编码解码器 // 2019 del
+ * JT/T 消息体编码解码器：0x8302 提问下发 // 2019 del
  *
  * @author togger
  */
@@ -47,7 +47,7 @@ public final class B8302Codec implements Codec<B8302> {
 
 
     /**
-     * JT/T 消息体【0x8302 提问】编码解码器 // 2019 del
+     * JT/T 消息体编码解码器：0x8302 提问 // 2019 del
      *
      * @author togger
      */

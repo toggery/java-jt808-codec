@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * JT/T 消息体【0x8800 多媒体数据上传应答】编码解码器
+ * JT/T 消息体编码解码器：0x8800 多媒体数据上传应答
  *
  * @author togger
  */

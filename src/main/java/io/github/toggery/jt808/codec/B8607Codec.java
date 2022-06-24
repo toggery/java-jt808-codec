@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B8607;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x8607 删除路线】编码解码器 元素类型为 DWORD
+ * JT/T 消息体编码解码器：0x8607 删除路线 元素类型为 DWORD
  *
  * <p>本条消息中包含的路线数，不超过 125 个，多于 125 个建议用多条消息，0 为删除所有路线</p>
  * @author togger

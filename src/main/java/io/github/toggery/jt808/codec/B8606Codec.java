@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x8606 设置路线】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x8606 设置路线 // 2019 modify
  *
  * @author togger
  */
@@ -77,7 +77,7 @@ public final class B8606Codec implements Codec<B8606> {
 
 
     /**
-     * JT/T 消息体【0x8606 路线】编码解码器 // 2019 modify
+     * JT/T 消息体编码解码器：0x8606 路线 // 2019 modify
      *
      * @author togger
      */

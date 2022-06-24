@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x8301 事件设置】编码解码器 // 2019 del
+ * JT/T 消息体编码解码器：0x8301 事件设置 // 2019 del
  *
  * @author togger
  */
@@ -59,7 +59,7 @@ public final class B8301Codec implements Codec<B8301> {
 
 
     /**
-     * JT/T 消息体【0x8301 事件】编码解码器 // 2019 del
+     * JT/T 消息体编码解码器：0x8301 事件 // 2019 del
      *
      * @author togger
      */

@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B8004;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x8004 查询服务器时间应答】编码解码器 // 2019 new
+ * JT/T 消息体编码解码器：0x8004 查询服务器时间应答 // 2019 new
  *
  * @author togger
  */

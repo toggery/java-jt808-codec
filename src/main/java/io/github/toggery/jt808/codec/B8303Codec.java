@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x8303 信息点播菜单设置】编码解码器 // 2019 del
+ * JT/T 消息体编码解码器：0x8303 信息点播菜单设置 // 2019 del
  *
  * @author togger
  */
@@ -59,7 +59,7 @@ public final class B8303Codec implements Codec<B8303> {
 
 
     /**
-     * JT/T 消息体【0x8303 信息点播菜单】编码解码器 // 2019 del
+     * JT/T 消息体编码解码器：0x8303 信息点播菜单 // 2019 del
      *
      * @author togger
      */

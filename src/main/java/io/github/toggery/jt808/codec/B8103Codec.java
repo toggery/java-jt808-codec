@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * JT/T 消息体【0x8103 设置终端参数】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x8103 设置终端参数 // 2019 modify
  *
  * @author togger
  */

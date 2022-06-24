@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B0303;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x0303 信息点播/取消】编码解码器 // 2019 del
+ * JT/T 消息体编码解码器：0x0303 信息点播/取消 // 2019 del
  *
  * @author togger
  */

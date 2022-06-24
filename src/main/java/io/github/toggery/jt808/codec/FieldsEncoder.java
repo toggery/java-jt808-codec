@@ -1,7 +1,7 @@
 package io.github.toggery.jt808.codec;
 
 /**
- * JT/T 字段列表编码方法
+ * JT/T 字段列表编码接口
  *
  * @param <I> 字段 {@code ID} 类型
  * @param <T> 目标对象类型

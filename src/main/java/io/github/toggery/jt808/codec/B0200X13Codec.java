@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B0200X13;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x0200 位置附加信息】编码解码器：0x13 路段行驶时间不足/过长报警附加信息，见表 30
+ * JT/T 消息体编码解码器：0x0200 位置信息汇报 附加信息 0x13 路段行驶时间不足/过长报警附加信息，见表 30
  *
  * @author togger
  */

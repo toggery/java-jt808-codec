@@ -4,7 +4,7 @@ import io.github.toggery.jt808.messagebody.B8A00;
 import io.netty.buffer.ByteBuf;
 
 /**
- * JT/T 消息体【0x8A00 平台 RSA 公钥】编码解码器
+ * JT/T 消息体编码解码器：0x8A00 平台 RSA 公钥
  *
  * @author togger
  */

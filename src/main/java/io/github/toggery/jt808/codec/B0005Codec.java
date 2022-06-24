@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * JT/T 消息体【0x0005 终端补传分包请求】编码解码器 // 2019 new
+ * JT/T 消息体编码解码器：0x0005 终端补传分包请求 // 2019 new
  *
  * @author togger
  */

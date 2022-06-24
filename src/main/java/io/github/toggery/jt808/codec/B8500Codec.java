@@ -8,7 +8,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * JT/T 消息体【0x8500 车辆控制】编码解码器 // 2019 modify
+ * JT/T 消息体编码解码器：0x8500 车辆控制 // 2019 modify
  *
  * @author togger
  */

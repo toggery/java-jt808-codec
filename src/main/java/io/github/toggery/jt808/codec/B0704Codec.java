@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * JT/T 消息体【0x0704 定位数据批量上传】编码解码器
+ * JT/T 消息体编码解码器：0x0704 定位数据批量上传
  *
  * @author togger
  */

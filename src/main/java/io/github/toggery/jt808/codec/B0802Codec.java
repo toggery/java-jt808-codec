@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x0802 存储多媒体数据检索应答】编码解码器
+ * JT/T 消息体编码解码器：0x0802 存储多媒体数据检索应答
  *
  * @author togger
  */
@@ -50,7 +50,7 @@ public class B0802Codec implements Codec<B0802> {
 
 
     /**
-     * JT/T 消息体【0x0802 存储多媒体数据】编码解码器
+     * JT/T 消息体编码解码器：0x0802 存储多媒体数据
      *
      * @author togger
      */

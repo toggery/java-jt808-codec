@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * JT/T 消息体【0x8003 服务器补传分包请求】编码解码器
+ * JT/T 消息体编码解码器：0x8003 服务器补传分包请求
  *
  * @author togger
  */

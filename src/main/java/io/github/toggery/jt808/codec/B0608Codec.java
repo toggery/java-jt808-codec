@@ -6,7 +6,7 @@ import io.netty.buffer.ByteBuf;
 import java.util.List;
 
 /**
- * JT/T 消息体【0x0608 查询区域或线路数据应答】编码解码器 // 2019 new
+ * JT/T 消息体编码解码器：0x0608 查询区域或线路数据应答 // 2019 new
  *<br><br>
  * ？？？矛盾：协议中集合元素类型为 DWORD，而描述则是区域或路线消息体数据格式 ？？？
  *
