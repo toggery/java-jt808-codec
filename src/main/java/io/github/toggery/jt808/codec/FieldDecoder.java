@@ -9,6 +9,7 @@ import io.netty.buffer.ByteBuf;
  * @param <T> 目标对象类型
  * @author togger
  */
+@FunctionalInterface
 public interface FieldDecoder<I, T> {
 
 
@@ -17,9 +18,8 @@ public interface FieldDecoder<I, T> {
      * @param version 版本号
      * @param buf 字节缓冲区
      * @param target 要解码的对象
-     * @param <S> 要解码的对象类型
      * @return 是否成功
      */
-    <S extends T> boolean decode(I id, int version, ByteBuf buf, S target);
+    boolean decode(I id, int version, ByteBuf buf, T target);
 
 }

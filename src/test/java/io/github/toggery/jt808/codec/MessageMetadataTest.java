@@ -4,6 +4,7 @@ import io.github.toggery.jt808.messagebody.HexUtil;
 import org.junit.jupiter.api.*;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,10 +49,15 @@ class MessageMetadataTest {
             System.out.printf("%d/%d. ", ++index, metadataCollection.size());
             System.out.println(metadata);
             final String id = HexUtil.wordString(metadata.getId()).substring(2).toUpperCase();
-            final boolean sameName = metadata.getName() != null && metadata.getName().toUpperCase().indexOf(id) == 2;
-            final boolean sameBody = metadata.getBodyCodec() == null
-                    || id.equals(metadata.getBodyCodec().getClass().getSimpleName().substring(1, 5));
-            assertTrue(sameName && sameBody, "消息 ID、消息名称与消息体命名应符合统一规则");
+            final boolean sameName = Optional.ofNullable(metadata.getName())
+                    .map(String::toUpperCase)
+                    .map(n -> n.toUpperCase().indexOf(id) > 0)
+                    .orElse(false);
+            final boolean sameBody = Optional.ofNullable(metadata.getBodyCodec())
+                    .map(Object::getClass).map(Class::getSimpleName).map(String::toUpperCase)
+                    .map(n -> n.indexOf(id) > 0)
+                    .orElse(true);
+            assertTrue(sameName && sameBody, "消息 ID、消息名称与消息体编码解码器命名应符合统一规则");
         }
     }
 

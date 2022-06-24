@@ -136,16 +136,16 @@ class MessageTest {
             );
             System.out.println();
             final Object body = bodyMap.get(metadata.getId());
-            assertTrue((bodyCodec == null && body == null) || (bodyCodec != null && body != null),
-                    "消息体编码解码器与其实例必须同时为 null 或非 null");
+            assertTrue((bodyCodec == null && body == null) || (bodyCodec != null && body != null)
+                    ,"消息体编码解码器与其实例必须同时为 null 或非 null");
             final Message<?> msg = Message.of(metadata.getId(), body);
             codecOne(msg, buffs, messageMetadataMap, attributeMap);
             System.out.println();
         }
     }
 
-    static void codecOne(Message<?> msg, List<ByteBuf> buffs,
-                         Map<Integer, MessageMetadata> messageMetadataMap, AttributeMap attributeMap) {
+    static void codecOne(Message<?> msg, List<ByteBuf> buffs
+            , Map<Integer, MessageMetadata> messageMetadataMap, AttributeMap attributeMap) {
         msg.setSimNo("18912345678");
 //            msg.setVersion(1);
 
@@ -153,7 +153,7 @@ class MessageTest {
         System.out.println("编码前: ");
         System.out.println(msg);
         try {
-            Message.encode(msg, UnpooledByteBufAllocator.DEFAULT::buffer, messageMetadataMap, buffs::add, attributeMap);
+            Message.encode(msg, messageMetadataMap, attributeMap, UnpooledByteBufAllocator.DEFAULT::buffer, buffs::add);
             assertTrue(buffs.size() > 0, "Message.encode 方法应该至少产生一个 ByteBuf 对象");
             System.out.println("编码后: ");
             buffs.forEach(bf -> System.out.println(ByteBufUtil.hexDump(bf)));

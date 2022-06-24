@@ -53,21 +53,27 @@ public final class Message<B> extends AbstractToStringJoiner {
      * 封装（编码）消息，消息数据首尾含有标识位（分隔符）
      *
      * @param msg 要封装（编码）的消息
-     * @param bufSupplier 字节缓冲区提供者
-     * @param bufConsumer 字节缓冲区消费者
      * @param messageMetadataMap 消息元数据字典
      * @param attributeMap 属性字典
+     * @param bufSupplier 字节缓冲区提供者
+     * @param bufConsumer 字节缓冲区消费者
      * @param <T> 消息体类型
      * @throws NullPointerException 如果任何一个参数对象为 {@code null}
      * @throws EncodingException 如果执行过程中出现编码错误
      */
-    public static <T> void encode(Message<T> msg, Function<Integer, ByteBuf> bufSupplier
-            , Map<Integer, MessageMetadata> messageMetadataMap
-            , Consumer<ByteBuf> bufConsumer, AttributeMap attributeMap) {
+    public static <T> void encode(Message<T> msg
+            , Map<Integer, MessageMetadata> messageMetadataMap, AttributeMap attributeMap
+            , Function<Integer, ByteBuf> bufSupplier, Consumer<ByteBuf> bufConsumer) {
         Objects.requireNonNull(msg);
+        Objects.requireNonNull(messageMetadataMap);
+        Objects.requireNonNull(attributeMap);
         Objects.requireNonNull(bufSupplier);
         Objects.requireNonNull(bufConsumer);
-        Objects.requireNonNull(attributeMap);
+
+        final MessageMetadata metadata = Objects.requireNonNull(messageMetadataMap).get(msg.id);
+        if (metadata == null) {
+            throw new EncodingException("not found metadata of message: " + msg);
+        }
 
         msg.setBodyLength(0);
         msg.setLongBody(false);
@@ -84,10 +90,6 @@ public final class Message<B> extends AbstractToStringJoiner {
             return;
         }
 
-        final MessageMetadata metadata = Objects.requireNonNull(messageMetadataMap).get(msg.id);
-        if (metadata == null) {
-            throw new EncodingException("not found metadata of message: " + msg);
-        }
         final Codec<T> bodyCodec = castBodyCodec(metadata.getBodyCodec());
         if (bodyCodec == null) {
             throw new EncodingException("no body codec for message: " + msg);
@@ -167,7 +169,6 @@ public final class Message<B> extends AbstractToStringJoiner {
     public static <T> Message<T> decode(ByteBuf buf
             , Map<Integer, MessageMetadata> messageMetadataMap, AttributeMap attributeMap) {
         Objects.requireNonNull(buf);
-        Objects.requireNonNull(attributeMap);
 
         if (!buf.isReadable()) return null;
 
@@ -203,6 +204,7 @@ public final class Message<B> extends AbstractToStringJoiner {
     public static <T> Message<T> decodeWithoutDelimiters(ByteBuf buf
             , Map<Integer, MessageMetadata> messageMetadataMap, AttributeMap attributeMap) {
         Objects.requireNonNull(buf);
+        Objects.requireNonNull(messageMetadataMap);
         Objects.requireNonNull(attributeMap);
 
         buf = unescape(buf);
@@ -219,14 +221,15 @@ public final class Message<B> extends AbstractToStringJoiner {
 
             final Message<T> msg = new Message<>();
             msg.decode(verified);
-            if (msg.getBodyLength() <= 0) {
-                return msg;
-            }
-
             final MessageMetadata metadata = Objects.requireNonNull(messageMetadataMap).get(msg.id);
             if (metadata == null) {
                 throw new DecodingException("not found metadata of message: " + msg);
             }
+
+            if (msg.getBodyLength() <= 0) {
+                return msg;
+            }
+
             final Codec<T> bodyCodec = castBodyCodec(metadata.getBodyCodec());
             if (bodyCodec == null) {
                 throw new DecodingException("no body codec for message: " + msg);
