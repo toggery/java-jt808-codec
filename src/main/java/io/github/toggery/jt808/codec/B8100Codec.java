@@ -19,7 +19,7 @@ public final class B8100Codec implements Codec<B8100> {
     public void encode(int version, ByteBuf buf, B8100 target) {
         Codec.writeWord(buf, target.getReplySn());
         Codec.writeByte(buf, target.getResult());
-        if (target.getResult() == 0) {
+        if (target.isSuccessful()) {
             Codec.writeString(buf, target.getToken());
         }
     }
@@ -28,7 +28,7 @@ public final class B8100Codec implements Codec<B8100> {
     public void decode(int version, ByteBuf buf, B8100 target) {
         target.setReplySn(Codec.readWord(buf));
         target.setResult(Codec.readByte(buf));
-        target.setToken(target.getResult() == 0 ? Codec.readString(buf) : null);
+        target.setToken(target.isSuccessful() ? Codec.readString(buf) : null);
     }
 
     @Override

@@ -459,7 +459,7 @@ class MessageTest {
     static B8100 b8100() {
         final B8100 b = new B8100();
         b.setReplySn(1);
-        b.setResult(B8100.RESULT_VEHICLE_REGISTERED);
+        b.setResult(B8100.RESULT_SUCCESSFUL);
         b.setToken("token");
 
         return b;

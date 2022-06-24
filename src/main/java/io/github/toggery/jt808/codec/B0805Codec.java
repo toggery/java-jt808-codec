@@ -21,7 +21,7 @@ public final class B0805Codec implements Codec<B0805> {
     public void encode(int version, ByteBuf buf, B0805 target) {
         Codec.writeWord(buf, target.getReplySn());
         Codec.writeByte(buf, target.getResult());
-        if (target.getResult() != 0) {
+        if (!target.isSuccessful()) {
             return;
         }
 
@@ -44,7 +44,7 @@ public final class B0805Codec implements Codec<B0805> {
 
         target.setReplySn(Codec.readWord(buf));
         target.setResult(Codec.readByte(buf));
-        if (target.getResult() != 0) {
+        if (!target.isSuccessful()) {
             return;
         }
 

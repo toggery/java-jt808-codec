@@ -19,12 +19,12 @@ public final class B0702Codec implements Codec<B0702> {
     public void encode(int version, ByteBuf buf, B0702 target) {
         Codec.writeByte(buf, target.getStatus());
         Codec.writeBcd(buf, target.getTime(), 6);
-        if (target.getStatus() != 1) {
+        if (target.getStatus() != B0702.STATUS_IC_CARD_INSERTED) {
             return;
         }
 
         Codec.writeByte(buf, target.getResult());
-        if (target.getResult() != 0) {
+        if (!target.isSuccessful()) {
             return;
         }
 
@@ -51,12 +51,12 @@ public final class B0702Codec implements Codec<B0702> {
 
         target.setStatus(Codec.readByte(buf));
         target.setTime(Codec.readBcd(buf, 6, false));
-        if (target.getStatus() != 1) {
+        if (target.getStatus() != B0702.STATUS_IC_CARD_INSERTED) {
             return;
         }
 
         target.setResult(Codec.readByte(buf));
-        if (target.getResult() != 0) {
+        if (!target.isSuccessful()) {
             return;
         }
 
