@@ -5,6 +5,7 @@
 
 <!-- Add buttons here -->
 
+![JDK](https://img.shields.io/badge/JDK-8+-green.svg)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/toggery/java-jt808-codec?include_prereleases)
 ![GitHub last commit](https://img.shields.io/github/last-commit/toggery/java-jt808-codec)
 ![GitHub issues](https://img.shields.io/github/issues-raw/toggery/java-jt808-codec)
