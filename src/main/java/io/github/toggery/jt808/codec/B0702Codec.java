@@ -24,7 +24,7 @@ public final class B0702Codec implements Codec<B0702> {
         }
 
         Codec.writeByte(buf, target.getResult());
-        if (!target.isSuccessful()) {
+        if (target.getResult() != B0702.RESULT_SUCCESSFUL) {
             return;
         }
 
@@ -56,7 +56,7 @@ public final class B0702Codec implements Codec<B0702> {
         }
 
         target.setResult(Codec.readByte(buf));
-        if (!target.isSuccessful()) {
+        if (target.getResult() != B0702.RESULT_SUCCESSFUL) {
             return;
         }
 

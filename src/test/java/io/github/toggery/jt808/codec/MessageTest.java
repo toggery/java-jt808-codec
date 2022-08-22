@@ -440,7 +440,6 @@ class MessageTest {
         b.setReplySn(1);
         b.setReplyId(2);
         b.setResult(B8001.RESULT_UNSUPPORTED);
-        b.setTerminalInfo(new MyTerminalInfo());
 
         return b;
     }
@@ -913,38 +912,6 @@ class MessageTest {
         b.setX0102(102L);
         b.setX0103(103);
         b.setX0110(new byte[]{1,2,3,4,5,6,7,8});
-    }
-
-    static class MyTerminalInfo extends AbstractToStringJoiner implements TerminalInfo {
-        @Override
-        protected void toStringJoiner(StringJoiner joiner) {
-            joiner
-                    .add("simNo=" + getSimNo())
-                    .add("model=" + getModel())
-                    .add("group=" + getGroup())
-                    .add(String.format("idleTime=%,ds", getIdleTime()))
-            ;
-        }
-
-        @Override
-        public String getSimNo() {
-            return "18912345678";
-        }
-
-        @Override
-        public String getModel() {
-            return "unknown";
-        }
-
-        @Override
-        public String getGroup() {
-            return "togger";
-        }
-
-        @Override
-        public int getIdleTime() {
-            return 3600;
-        }
     }
 
 }

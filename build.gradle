@@ -5,18 +5,14 @@ plugins {
 }
 
 group = 'io.github.toggery'
-version = '2.0.0'
+version = '2.0.1'
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-repositories {
-	mavenCentral()
-}
-
 ext {
-	jt808MessageBodyVersion = '2.0.0'
-	nettyVersion = '4.1.78.Final'
-	jupiterVersion = '5.8.2'
+	jt808MessageBodyVersion = '2.0.1'
+	nettyVersion = '4.1.79.Final'
+	jupiterVersion = '5.9.0'
 }
 
 dependencies {
