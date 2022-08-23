@@ -9,6 +9,11 @@ version = '2.0.1'
 sourceCompatibility = '1.8'
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
 ext {
 	jt808MessageBodyVersion = '2.0.1'
 	nettyVersion = '4.1.79.Final'
