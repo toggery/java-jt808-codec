@@ -125,10 +125,13 @@ public final class B0200Codec implements Codec<B0200> {
         register(FieldCodec.ofWord(0x02, B0200::getX02, B0200::setX02));
         // 0x03 WORD 行驶记录功能获取的速度，0.1km/h
         register(FieldCodec.ofWord(0x03, B0200::getX03, B0200::setX03));
+
+        // ! 2013 add: 0x04
         // 0x04 WORD 需要人工确认报警事件的 ID，从 1 开始计数
         register(FieldCodec.ofWord(0x04, B0200::getX04, B0200::setX04));
 
-        // 0x05 BYTE[30] 胎压，单位为 Pa，标定轮子的顺序为从车头开始从左到右顺序排列，定长 30 字节，多余的字节为 0xFF，表示无效数据 // 2019 new
+        // ! 2019 add: 0x05~06
+        // 0x05 BYTE[30] 胎压，单位为 Pa，标定轮子的顺序为从车头开始从左到右顺序排列，定长 30 字节，多余的字节为 0xFF，表示无效数据
         register(FieldCodec.of(0x05, B0200::getX05, B0200::setX05,
                 ver -> ver > 0 ? (b, v) -> Codec.writeBytes(b, v, -30, PadChar.NUL) : null,
                 ver -> ver > 0 ? b -> Codec.readBytes(b, 30, PadChar.NUL) : null
@@ -139,6 +142,8 @@ public final class B0200Codec implements Codec<B0200> {
                 ver -> ver > 0 ? Codec::readShort : null
         ));
 
+        // 0x07-0x10 保留
+
         // 0x11 OBJECT 超速报警附加信息见表 28
         register(FieldCodec.of(0x11, B0200::getX11, B0200::setX11, B0200X11Codec.INSTANCE));
         // 0x12 OBJECT 进出区域/路线报警附加信息见表 29
@@ -146,19 +151,31 @@ public final class B0200Codec implements Codec<B0200> {
         // 0x13 OBJECT 路段行驶时间不足/过长报警附加信息见表 30
         register(FieldCodec.of(0x13, B0200::getX13, B0200::setX13, B0200X13Codec.INSTANCE));
 
+        // ! 2011 截至到以上
+
+        // ! 2013 add: 以下全部
+
+        // 0x14-0x24 保留
+
         // 0x25 DWORD 扩展车辆信号状态位，参数项格式和定义见表 31
         register(FieldCodec.ofDoubleWord(0x25, B0200::getX25, B0200::setX25));
+
+        // 0x25-0x29 保留
 
         // 0x2A WORD I0 状态位，参数项格式和定义见表 32
         register(FieldCodec.ofWord(0x2A, B0200::getX2A, B0200::setX2A));
         // 0x2B DWORD 模拟量，bit[0~15]，AD0;bit[l6~31]，AD1
         register(FieldCodec.ofDoubleWord(0x2B, B0200::getX2B, B0200::setX2B));
 
+        // 0x2C-0x2F 保留
+
         // 0x30 BYTE 无线通信网络信号强度
         register(FieldCodec.ofByte(0x30, B0200::getX30, B0200::setX30));
         // 0x31 BYTE GNSS定位卫星数
         register(FieldCodec.ofByte(0x31, B0200::getX31, B0200::setX31));
 
+        // 0xE0 后续信息长度 后续自定义信息长度
+        // 0xE1-0xFF 自定义区域
     }
 
 }

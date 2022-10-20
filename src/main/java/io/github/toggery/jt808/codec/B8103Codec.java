@@ -102,6 +102,8 @@ public final class B8103Codec implements Codec<B8103> {
         // 0x0007 DWORD SMS 消息重传次数
         register(FieldCodec.ofDoubleWord(0x0007L, B8103::getX0007, B8103::setX0007));
 
+        // 0x0008-0x000F 保留
+
         // 0x0010 STRING 主服务器 APN，无线通信拨号访问点，若网络制式为 CDMA，则该处为 PPP 拨号号码
         register(FieldCodec.ofString(0x0010L, B8103::getX0010, B8103::setX0010));
         // 0x0011 STRING 主服务器无线通信拨号用户名
@@ -123,19 +125,25 @@ public final class B8103Codec implements Codec<B8103> {
                 ver -> ver < 1 ? Codec::writeDoubleWord : null,
                 ver -> ver < 1 ? Codec::readDoubleWord : null
         ));
-        // 0x0019 DWORD 服务器 UDP 端口 // 2019 del
+
+        // ! 2019 del: 0x0019
+        // 0x0019 DWORD 服务器 UDP 端口
         register(FieldCodec.of(0x0019L, B8103::getX0019, B8103::setX0019,
                 ver -> ver < 1 ? Codec::writeDoubleWord : null,
                 ver -> ver < 1 ? Codec::readDoubleWord : null
         ));
-        // 0x001A STRING 道路运输证 IC 卡认证主服务器 IP 地址或域名
+
+        // ! 2013 add: 0x001A~001D
+        // 0x001A STRING 道路运输证 IC 卡认证主服务器 IP 地址或域名 // 2013 add
         register(FieldCodec.ofString(0x001AL, B8103::getX001A, B8103::setX001A));
-        // 0x001B DWORD 道路运输证 IC 卡认证主服务器 TCP 端口
+        // 0x001B DWORD 道路运输证 IC 卡认证主服务器 TCP 端口 // 2013 add
         register(FieldCodec.ofDoubleWord(0x001BL, B8103::getX001B, B8103::setX001B));
-        // 0x001C DWORD 道路运输证 IC 卡认证主服务器 UDP 端口
+        // 0x001C DWORD 道路运输证 IC 卡认证主服务器 UDP 端口 // 2013 add
         register(FieldCodec.ofDoubleWord(0x001CL, B8103::getX001C, B8103::setX001C));
         // 0x001D STRING 道路运输证 IC 卡认证备份服务器 IP 地址或域名，端口同主服务器
         register(FieldCodec.ofString(0x001DL, B8103::getX001D, B8103::setX001D));
+
+        // 0x001E-0x001F 保留
 
         // 0x0020 DWORD 位置汇报策略，0：定时汇报；1：定距汇报；2：定时和定距汇报
         register(FieldCodec.ofDoubleWord(0x0020L, B8103::getX0020, B8103::setX0020));
@@ -144,22 +152,23 @@ public final class B8103Codec implements Codec<B8103> {
         // 0x0022 DWORD 驾驶员未登录汇报时间间隔，单位为秒（s），值大于 0
         register(FieldCodec.ofDoubleWord(0x0022L, B8103::getX0022, B8103::setX0022));
 
-        // 0x0023 STRING 从服务器 APN，该值为空时，终端应使用主服务器相同配置 // 2019 new
+        // 2019 add: 0x0023~0026
+        // 0x0023 STRING 从服务器 APN，该值为空时，终端应使用主服务器相同配置
         register(FieldCodec.of(0x0023L, B8103::getX0023, B8103::setX0023,
                 ver -> ver > 0 ? Codec::writeString : null,
                 ver -> ver > 0 ? Codec::readString : null
         ));
-        // 0x0024 STRING 从服务器无线通信拨号用户名，该值为空时，终端应使用主服务器相同配置 // 2019 new
+        // 0x0024 STRING 从服务器无线通信拨号用户名，该值为空时，终端应使用主服务器相同配置
         register(FieldCodec.of(0x0024L, B8103::getX0024, B8103::setX0024,
                 ver -> ver > 0 ? Codec::writeString : null,
                 ver -> ver > 0 ? Codec::readString : null
         ));
-        // 0x0025 STRING 从服务器无线通信拨号密码，该值为空时，终端应使用主服务器相同配置 // 2019 new
+        // 0x0025 STRING 从服务器无线通信拨号密码，该值为空时，终端应使用主服务器相同配置
         register(FieldCodec.of(0x0025L, B8103::getX0025, B8103::setX0025,
                 ver -> ver > 0 ? Codec::writeString : null,
                 ver -> ver > 0 ? Codec::readString : null
         ));
-        // 0x0026 STRING 从服务器备份地址、IP 地址或域名，主机和端口用冒号分割，多个服务器使用分号分割 // 2019 new
+        // 0x0026 STRING 从服务器备份地址、IP 地址或域名，主机和端口用冒号分割，多个服务器使用分号分割
         register(FieldCodec.of(0x0026L, B8103::getX0026, B8103::setX0026,
                 ver -> ver > 0 ? Codec::writeString : null,
                 ver -> ver > 0 ? Codec::readString : null
@@ -172,6 +181,8 @@ public final class B8103Codec implements Codec<B8103> {
         // 0x0029 DWORD 缺省时间汇报间隔，单位为秒（s），值大于 0
         register(FieldCodec.ofDoubleWord(0x0029L, B8103::getX0029, B8103::setX0029));
 
+        // 0x002A-0x002B 保留
+
         // 0x002C DWORD 缺省距离汇报间隔，单位为米（m），值大于 0
         register(FieldCodec.ofDoubleWord(0x002CL, B8103::getX002C, B8103::setX002C));
         // 0x002D DWORD 驾驶员未登录汇报距离间隔，单位为米（m），值大于 0
@@ -182,14 +193,19 @@ public final class B8103Codec implements Codec<B8103> {
         register(FieldCodec.ofDoubleWord(0x002FL, B8103::getX002F, B8103::setX002F));
         // 0x0030 DWORD 拐点补传角度，值小于 180
         register(FieldCodec.ofDoubleWord(0x0030L, B8103::getX0030, B8103::setX0030));
+
+        // ! 2013 add: 0x0031
         // 0x0031 WORD 电子围栏半径（非法位移阈值），单位为米（m）
         register(FieldCodec.ofWord(0x0031L, B8103::getX0031, B8103::setX0031));
 
-        // 0x0032 BYTE[4] 违规行驶时段范围，精确到分。BYTE1：违规行驶开始时间的小时部分；BYTE2：违规行驶开始时间的分钟部分；BYTE3：违规行驶结束时间的小时部分；BYTE4：违规行驶结束时间的分钟部分。示例∶0x16320A1E，表示当天晚上10点50分到第二天早上10点30 分属于违规行驶时段 // 2019 new
+        // ! 2019 add: 0x0032
+        // 0x0032 BYTE[4] 违规行驶时段范围，精确到分。BYTE1：违规行驶开始时间的小时部分；BYTE2：违规行驶开始时间的分钟部分；BYTE3：违规行驶结束时间的小时部分；BYTE4：违规行驶结束时间的分钟部分。示例∶0x16320A1E，表示当天晚上10点50分到第二天早上10点30 分属于违规行驶时段
         register(FieldCodec.of(0x0032L, B8103::getX0032, B8103::setX0032,
                 ver -> ver > 0 ? (b, v) -> Codec.writeBytes(b, v, -4, PadChar.NUL) : null,
                 ver -> ver > 0 ? b -> Codec.readBytes(b, 4, PadChar.NUL) : null
         ));
+
+        // 0x00033-0x003F 保留
 
         // 0x0040 STRING 监控平台电话号码
         register(FieldCodec.ofString(0x0040L, B8103::getX0040, B8103::setX0040));
@@ -211,6 +227,8 @@ public final class B8103Codec implements Codec<B8103> {
         register(FieldCodec.ofString(0x0048L, B8103::getX0048, B8103::setX0048));
         // 0x0049 STRING 监管平台特权短信号码
         register(FieldCodec.ofString(0x0049L, B8103::getX0049, B8103::setX0049));
+
+        // 0x004A-0x004F 保留
 
         // 0x0050 DWORD 报警屏蔽字，与位置信息汇报消息中的报警标志相对应，相应位为 1 则相应报警被屏蔽
         register(FieldCodec.ofDoubleWord(0x0050L, B8103::getX0050, B8103::setX0050));
@@ -235,6 +253,7 @@ public final class B8103Codec implements Codec<B8103> {
         // 0x005A DWORD 最长停车时间，单位为秒（s）
         register(FieldCodec.ofDoubleWord(0x005AL, B8103::getX005A, B8103::setX005A));
 
+        // ! 2013 add: 0x005B~005E
         // 0x005B WORD 超速预警差值，单位为 1/10 千米每小时（1/10km/h）
         register(FieldCodec.ofWord(0x005BL, B8103::getX005B, B8103::setX005B));
         // 0x005C WORD 疲劳驾驶预警差值，单位为秒（s），值大于 0
@@ -244,10 +263,15 @@ public final class B8103Codec implements Codec<B8103> {
         // 0x005E WORD 侧翻报警参数设置，侧翻角度，单位 1 度，默认为 30 度
         register(FieldCodec.ofWord(0x005EL, B8103::getX005E, B8103::setX005E));
 
+        // 0x005F-0x0063 保留
+
+        // ! 2013 add: 0x0064~0065
         // 0x0064 DWORD 定时拍照控制，参数项格式和定义见表 14
         register(FieldCodec.ofDoubleWord(0x0064L, B8103::getX0064, B8103::setX0064));
         // 0x0065 DWORD 定距拍照控制，参数项格式和定义见表 15
         register(FieldCodec.ofDoubleWord(0x0065L, B8103::getX0065, B8103::setX0065));
+
+        // 0x0066-0x006F 保留
 
         // 0×0070 DWORD 图像/视频质量，设置范围为 1～10，1 表示最优质量
         register(FieldCodec.ofDoubleWord(0x0070L, B8103::getX0070, B8103::setX0070));
@@ -260,6 +284,8 @@ public final class B8103Codec implements Codec<B8103> {
         // 0x0074 DWORD 色度，设置范围为 0~255
         register(FieldCodec.ofDoubleWord(0x0074L, B8103::getX0074, B8103::setX0074));
 
+        // 0x0075-0x007F 保留
+
         // 0x0080 DWORD 车辆里程表读数，单位：1/10km
         register(FieldCodec.ofDoubleWord(0x0080L, B8103::getX0080, B8103::setX0080));
         // 0x0081 WORD 车辆所在的省域 ID
@@ -270,6 +296,12 @@ public final class B8103Codec implements Codec<B8103> {
         register(FieldCodec.ofString(0x0083L, B8103::getX0083, B8103::setX0083));
         // 0x0084 BYTE 车牌颜色，0.未上车牌 1.蓝色 2.黄色 3.黑色 4.白色 5.绿色 9.其他
         register(FieldCodec.ofByte(0x0084L, B8103::getX0084, B8103::setX0084));
+
+        // ! 2011 截至到以上
+
+        // 0x0085-0x008F 保留
+
+        // ! 2013 add: 以下全部
 
         // 0x0090 BYTE GNSS 定位模式，bit0，0：禁用 GPS 定位，1：启用 GPS 定位；bit1，0：禁用北斗定位，1：启用北斗定位；bit2，0：禁用 GLONASS 定位，1：启用 GLONASS 定位；bit3，0：禁用 Galileo 定位，1：启用 Galileo 定位
         register(FieldCodec.ofByte(0x0090L, B8103::getX0090, B8103::setX0090));
@@ -283,6 +315,8 @@ public final class B8103Codec implements Codec<B8103> {
         register(FieldCodec.ofByte(0x0094L, B8103::getX0094, B8103::setX0094));
         // 0x0095 DWORD GNSS 模块详细定位数据上传设置，上传方式为 0x01 时，单位为秒（s）；上传方式为 0x02 时，单位为米（m）；上传方式为 0xOB 时，单位为秒（s）；上传方式为 0x0C 时，单位为米（m）；上传方式为 0xOD 时，单位为条
         register(FieldCodec.ofDoubleWord(0x0095L, B8103::getX0095, B8103::setX0095));
+
+        // 0x0096-0x009F 保留
 
         // 0x0100 DWORD CAN 总线通道 1 采集时间间隔，单位为毫秒（ms），0 表示不采集
         register(FieldCodec.ofDoubleWord(0x0100L, B8103::getX0100, B8103::setX0100));
@@ -298,6 +332,12 @@ public final class B8103Codec implements Codec<B8103> {
                 ver -> (b, v) -> Codec.writeBytes(b, v, -8, PadChar.NUL),
                 ver -> b -> Codec.readBytes(b, 8, PadChar.NUL)
         ));
+
+        // 0x0111-0x01FF BYTE[8] 用于其他 CAN 总线 ID 单独采集设置
+
+        // 0x0200-0xEFFF 保留
+
+        // 0xF000-0xFFFF 用户自定义
     }
 
 }

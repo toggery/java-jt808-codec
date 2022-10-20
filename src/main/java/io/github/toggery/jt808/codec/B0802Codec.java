@@ -51,6 +51,7 @@ public class B0802Codec implements Codec<B0802> {
 
     /**
      * JT/T 消息体编码解码器：0x0802 存储多媒体数据
+     * 与 2011 版完全不兼容！！！ 2011 版少了首部的多媒体 ID DWORD
      *
      * @author togger
      */

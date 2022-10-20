@@ -5,6 +5,7 @@ import io.netty.buffer.ByteBuf;
 
 /**
  * JT/T 消息体编码解码器：0x0801 多媒体数据上传（位置信息汇报的信息基本数据） // 2019 modify
+ * 注意：与 2011 版完全不兼容！！！ 2013 版没有【位置基本信息数据】
  *
  * @author togger
  */

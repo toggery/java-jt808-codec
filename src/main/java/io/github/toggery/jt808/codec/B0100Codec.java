@@ -49,7 +49,8 @@ public final class B0100Codec implements Codec<B0100> {
         } else {
             // 2013
             target.setMaker(Codec.readChars(buf, 5));
-            target.setModel(Codec.readChars(buf, 20));
+            // 兼容 2011
+            target.setModel(Codec.readChars(buf, buf.readableBytes() > 27 ? 20 : 8));
             target.setId(Codec.readChars(buf, 7));
         }
 

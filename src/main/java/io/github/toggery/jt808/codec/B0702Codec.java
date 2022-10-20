@@ -5,6 +5,7 @@ import io.netty.buffer.ByteBuf;
 
 /**
  * JT/T 消息体编码解码器：0x0702 驾驶员身份信息采集上报 // 2019 modify
+ * 注意：与 2011 版完全不兼容！！！
  *
  * @author togger
  */
