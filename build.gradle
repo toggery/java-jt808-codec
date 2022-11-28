@@ -16,7 +16,7 @@ repositories {
 
 ext {
 	jt808MessageBodyVersion = '2.0.1'
-	nettyVersion = '4.1.84.Final'
+	nettyVersion = '4.1.85.Final'
 	jupiterVersion = '5.9.1'
 }
 
